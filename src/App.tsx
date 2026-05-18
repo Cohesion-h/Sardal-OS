@@ -27,7 +27,9 @@ import {
   Monitor,
   Download,
   Share2,
-  Bookmark
+  Bookmark,
+  Heart,
+  Users
 } from 'lucide-react';
 
 // --- Constants & Data ---
@@ -77,29 +79,44 @@ const STRATEGIC_PHASES = [
 
 const PILLARS = [
   { 
-    title: 'Radical Segmentation', 
+    title: 'Morphological Segmentation', 
     ar: 'التقطيع الصرفي الجذري', 
-    desc: 'Arabic as a base unit via triliteral roots, not statistical translation.',
+    desc: 'Arabic triliteral roots as the base building block, avoiding statistical translation errors.',
     descAr: 'العربية كوحدة بناء أساسية عبر الجذور الثلاثية لا الترجمة الإحصائية.'
   },
   { 
     title: 'Al-Qistas Balance', 
     ar: 'هندسة القسطاس', 
-    desc: 'Balanced resource distribution with verified mathematical architecture.',
+    desc: 'Balanced resource distribution using mathematical architectures and golden ratios.',
     descAr: 'توزيع متوازن للموارد والانتباه بمعمارية رياضية موثقة.'
   },
   { 
-    title: 'Modulo-19', 
+    title: 'Modulo-19 Protocol', 
     ar: 'بروتوكول موديلو 19', 
-    desc: 'Deterministic mathematical verification of all AI content outputs.',
-    descAr: 'تحقق رياضي حتمي من المخرجات.'
+    desc: 'Deterministic mathematical verification layer for all system outputs and integrity.',
+    descAr: 'تحقق رياضي حتمي من المخرجات لضمان سلامة البيانات.'
   },
   { 
     title: 'Cognitive Firewall', 
     ar: 'جدار الحماية الإدراكي', 
-    desc: 'Protecting national linguistic models from pollution and injection.',
-    descAr: 'حماية النماذج اللغوية الوطنية من التلوث والحقن.'
+    desc: 'Shielding national linguistic models from cultural pollution and prompt injection.',
+    descAr: 'حماية النماذج اللغوية الوطنية من التلوث الفكري والحقن السلبي.'
   }
+];
+
+const MAQASID = [
+  { name: 'Faith', ar: 'حفظ الدين', icon: Shield },
+  { name: 'Life', ar: 'حفظ النفس', icon: Heart },
+  { name: 'Intellect', ar: 'حفظ العقل', icon: Cpu },
+  { name: 'Lineage', ar: 'حفظ النسل', icon: Users },
+  { name: 'Wealth', ar: 'حفظ المال', icon: Award },
+];
+
+const VISION_GOALS = [
+  { title: 'Knowledge Economy', ar: 'الاقتصاد المعرفي السيادي', desc: 'Localization of IP and strategic licensing within Kuwait.' },
+  { title: 'Secure Digital Shift', ar: 'التحول الرقمي الآمن', desc: 'Cognitive infrastructure where data never leaves national borders.' },
+  { title: 'Human Capital', ar: 'تنمية الكوادر الوطنية', desc: 'Building the next generation of Kuwaiti sovereign AI engineers.' },
+  { title: 'Identity Protection', ar: 'حماية الهوية الثقافية', desc: 'Linguistic models designed from the Arabic root up.' },
 ];
 
 // --- Components ---
@@ -188,20 +205,21 @@ export default function App() {
   return (
     <div className="min-h-screen selection:bg-primary/20 bg-surface text-on-surface overflow-x-hidden">
       {/* Navigation */}
-      <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'glass py-4 shadow-2xl' : 'bg-transparent py-8'}`}>
+      <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'glass py-3 shadow-2xl' : 'bg-transparent py-5'}`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <SardalWheel className="w-9 h-9" />
-            <div className="flex flex-col leading-[0.9]">
-              <span className="text-xl font-bold tracking-normal">Sardal <span className="text-primary-container">OS</span></span>
-              <span className="arabic text-[10px] font-bold opacity-70">نظام السردال السيادي</span>
+            <SardalWheel className="w-8 h-8" />
+            <div className="flex flex-col leading-[0.85]">
+              <span className="text-lg font-bold tracking-tight">Sardal <span className="text-primary-container">OS</span></span>
+              <span className="arabic text-[9px] font-bold opacity-70">نظام السردال السيادي</span>
             </div>
           </div>
           
-          <div className="hidden lg:flex items-center gap-8 text-[9px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">
-            <a href="#vision" className="hover:text-primary transition-colors">Vision</a>
-            <a href="#pillars" className="hover:text-primary transition-colors">Pillars</a>
-            <a href="#status" className="hover:text-primary transition-colors">Core Status</a>
+          <div className="hidden lg:flex items-center gap-6 text-[8px] font-bold uppercase tracking-widest text-on-surface-variant">
+            <a href="#pillars" className="hover:text-primary transition-colors">Engineering</a>
+            <a href="#status" className="hover:text-primary transition-colors">v0.6 Status</a>
+            <a href="#maqasid" className="hover:text-primary transition-colors">Maqasid</a>
+            <a href="#generation" className="hover:text-primary transition-colors">The Generation</a>
             <a href="#ip" className="hover:text-primary transition-colors">IP Assets</a>
           </div>
 
@@ -230,32 +248,32 @@ export default function App() {
 
           <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
             >
-              <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full glass-bright text-[10px] uppercase font-bold tracking-[0.1em] text-primary-container mb-10 shadow-inner border border-white/5">
-                <Shield className="w-4 h-4" />
-                Sardal Core v0.6 | New Kuwait 2035
+              <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full glass-bright text-[9px] uppercase font-bold tracking-widest text-primary-container mb-8 shadow-inner border border-white/5">
+                <Shield className="w-3.5 h-3.5" />
+                Sardal Core Shell v0.6 | Project Overview
               </div>
 
-              <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-normal leading-none">
+              <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter leading-none">
                 Sardal <span className="text-primary-container">OS</span>
               </h1>
 
-              <p className={`max-w-3xl mx-auto text-lg md:text-xl text-on-surface-variant leading-relaxed mb-12 font-medium ${activeLang === 'ar' ? 'arabic tracking-wide' : 'tracking-normal'}`}>
+              <p className={`max-w-3xl mx-auto text-base md:text-lg text-on-surface-variant leading-relaxed mb-12 font-medium ${activeLang === 'ar' ? 'arabic tracking-wide' : 'tracking-tight'}`}>
                 {activeLang === 'ar' 
-                  ? 'بناء نظام ذكاء اصطناعي سيادي كامل للأمة العربية والإسلامية، يحفظ الهوية والفطرة، ويخدم السيادة الوطنية، ويعمل محلياً بالكامل.'
-                  : 'Building a fully sovereign AI operating system for the Arabic and Islamic world, preserving identity and serves national sovereignty, running entirely on-premise.'
+                  ? 'بناء نظام ذكاء اصطناعي سيادي كامل للأمة العربية والإسلامية، يحفظ الهوية والفطرة، ويخدم السيادة الوطنية، ويعمل محلياً بالكامل دون أي اعتماد على بنى تحتية أجنبية.'
+                  : 'A fully sovereign Arabic-Islamic AI operating system designed to protect cognitive sovereignty and national digital independence with zero dependency on foreign cloud.'
                 }
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <button className="w-full sm:w-auto px-10 py-5 bg-primary-container text-on-primary-container font-bold uppercase tracking-[0.1em] text-[10px] rounded-lg shadow-2xl hover:bg-primary transition-all active:scale-95">
-                  {activeLang === 'ar' ? 'مركز الخدمات السيادية' : 'Sovereign Dashboard'}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button className="w-full sm:w-auto px-8 py-4 bg-primary-container text-on-primary-container font-bold uppercase tracking-widest text-[9px] rounded-md shadow-xl hover:bg-primary transition-all active:scale-95">
+                  {activeLang === 'ar' ? 'نظرة عامة على المشروع' : 'Strategic Overview'}
                 </button>
-                <button className="w-full sm:w-auto px-10 py-5 glass-bright font-bold uppercase tracking-[0.1em] text-[10px] rounded-lg hover:bg-surface-bright transition-all border border-white/10">
-                  {activeLang === 'ar' ? 'رؤية كويت جديدة 2035' : 'New Kuwait 2035'}
+                <button className="w-full sm:w-auto px-8 py-4 glass-bright font-bold uppercase tracking-widest text-[9px] rounded-md hover:bg-surface-bright transition-all border border-white/10">
+                  {activeLang === 'ar' ? 'رؤية كويت 2035' : 'New Kuwait 2035'}
                 </button>
               </div>
             </motion.div>
@@ -311,19 +329,44 @@ export default function App() {
           </div>
         </section>
 
-        {/* Status Center */}
+        {/* Operational Core (v0.6) */}
         <section id="status" className="py-24 bg-surface-container/20 border-y border-outline-variant/10">
           <div className="max-w-7xl mx-auto px-6">
             <SectionHeading 
-              arabic="الحالة الحالية (v0.6)" 
-              subtitle="Current operational status of core segments and active research modules."
+              arabic="النواة التشغيلية (v0.6)" 
+              subtitle="Current operational status of key system modules and living cognitive layers."
               subtitleAr="الحالة التشغيلية الحالية للقطاعات الأساسية ووحدات البحث النشطة."
             >
-              System Operations
+              Operational Core
             </SectionHeading>
 
             <div className="grid lg:grid-cols-3 gap-8 relative">
-              {STRATEGIC_PHASES.map((phase, i) => (
+              {[
+                {
+                  tag: 'Cognitive Core',
+                  title: 'Stable Engine',
+                  titleAr: 'المحرك المستقر',
+                  desc: 'The primary linguistic processor handling high-fidelity Arabic morphological parsing.',
+                  descAr: 'المعالج اللغوي الأساسي الذي يتعامل مع التحليل الصرفي العربي عالي الدقة.',
+                  items: ['Morphological Tunnels', 'Contextual Memory', 'Root Isolation']
+                },
+                {
+                  tag: 'Sovereign Auth',
+                  title: 'Galaf v1.2',
+                  titleAr: 'طبقة جلاف v1.2',
+                  desc: 'Enterprise-grade identity verification and sovereign credential management.',
+                  descAr: 'إدارة الهوية والاعتمادات السيادية لمستوى المؤسسات الحكومية.',
+                  items: ['Zero-Trust Shell', 'PQC Ready', 'Identity Shield']
+                },
+                {
+                  tag: 'Digital Shield',
+                  title: 'Lexical Guard',
+                  titleAr: 'الحارس المعجمي',
+                  desc: 'Real-time monitoring of AI outputs to ensure ethical and cultural alignment.',
+                  descAr: 'مراقبة فورية لمخرجات الذكاء الاصطناعي لضمان التوافق القيمي.',
+                  items: ['Maqasid Grader', 'Injection Block', 'Root Filter']
+                }
+              ].map((phase) => (
                 <div 
                   key={phase.tag}
                   className="glass p-8 rounded-2xl border border-white/5 hover:border-primary/20 transition-all group overflow-hidden"
@@ -351,6 +394,82 @@ export default function App() {
           </div>
         </section>
 
+        {/* Al-Qistas Maqasid Framework */}
+        <section id="maqasid" className="py-24 max-w-7xl mx-auto px-6">
+          <SectionHeading 
+            arabic="إطار المقاصد والقيم" 
+            subtitle="The ethical compass ensuring all AI decisions align with fundamental Islamic value pillars."
+            subtitleAr="البوصلة الأخلاقية التي تضمن توافق جميع قرارات الذكاء الاصطناعي مع ركائز القيم الإسلامية الأساسية."
+          >
+            Ethical Framework
+          </SectionHeading>
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {MAQASID.map((m) => (
+              <div key={m.name} className="glass p-6 rounded-xl flex flex-col items-center gap-4 text-center hover:border-primary/30 transition-all border border-white/5">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <m.icon className="w-5 h-5" />
+                </div>
+                <div>
+                   <p className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">{m.name}</p>
+                   <p className="arabic text-sm font-bold text-white">{m.ar}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* New Kuwait 2035 Alignment */}
+        <section className="py-24 bg-surface-container/30 border-y border-outline-variant/10">
+          <div className="max-w-7xl mx-auto px-6">
+            <SectionHeading 
+              arabic="التوافق مع رؤية كويت جديدة 2035" 
+              subtitle="Directly supporting Kuwait's national vision for a smart, diversified knowledge economy."
+              subtitleAr="دعم رؤية الكويت الوطنية مباشرة لاقتصاد معرفي ذكي ومتنوع."
+            >
+              National Alignment
+            </SectionHeading>
+
+            <div className="grid md:grid-cols-4 gap-6">
+              {VISION_GOALS.map(goal => (
+                <div key={goal.title} className="p-6 glass rounded-2xl border border-white/5 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-all" />
+                  <h4 className="text-xs font-bold uppercase tracking-widest mb-2">{goal.title}</h4>
+                  <p className="arabic text-sm font-bold text-primary-container mb-3">{goal.ar}</p>
+                  <p className="text-[10px] text-on-surface-variant leading-relaxed font-medium">{goal.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Sovereign Generation Path */}
+        <section id="generation" className="py-24 max-w-7xl mx-auto px-6">
+          <SectionHeading 
+            arabic="مسار الرعيل السيادي" 
+            subtitle="Building a generation of Kuwaiti sovereign AI engineers and strategic architects."
+            subtitleAr="إطار عملي منظم لبناء جيل من الكوادر الوطنية المؤهلة في الذكاء الاصطناعي السيادي."
+          >
+            Sovereign Generation
+          </SectionHeading>
+
+          <div className="grid md:grid-cols-4 gap-4">
+            {[
+              { step: '01', title: 'Seed Phase', ar: 'مرحلة الغرس', desc: 'University and youth outreach to identify potential architects.' },
+              { step: '02', title: 'Incubation', ar: 'مرحلة الاحتضان', desc: 'Deep technical immersion in the Sardal Core architecture.' },
+              { step: '03', title: 'Empowerment', ar: 'مرحلة التمكين', desc: 'Direct contribution to national sovereign security shells.' },
+              { step: '04', title: 'Governance', ar: 'مرحلة القيادة', desc: 'Strategic roles within the high-stakes national AI council.' }
+            ].map((path) => (
+              <div key={path.step} className="p-6 glass rounded-xl border border-white/5 relative group hover:border-primary/20 transition-all">
+                <span className="text-[10px] font-bold text-primary mb-4 block">{path.step}</span>
+                <h5 className="text-sm font-bold mb-1">{path.title}</h5>
+                <p className="arabic text-sm font-bold text-primary-container mb-4">{path.ar}</p>
+                <p className="text-[10px] text-on-surface-variant leading-relaxed">{path.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* IP & Recognition */}
         <section id="ip" className="py-24 max-w-7xl mx-auto px-6">
           <SectionHeading 
@@ -362,23 +481,23 @@ export default function App() {
           </SectionHeading>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="glass p-8 rounded-2xl border-l-4 border-l-primary flex flex-col gap-4">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-outline uppercase">Patent Roadmap</span>
-              <p className="text-4xl font-black">11</p>
-              <p className="arabic text-xl font-bold text-primary-container">ابتكارات قابلة للتسجيل</p>
-              <p className="text-xs text-on-surface-variant font-medium">7 architectural patents + 4 future-tier innovations.</p>
+            <div className="glass p-6 rounded-xl border-l-2 border-l-primary flex flex-col gap-3">
+              <span className="text-[8px] font-bold tracking-[0.2em] text-outline uppercase">Patent Roadmap</span>
+              <p className="text-3xl font-black">11</p>
+              <p className="arabic text-lg font-bold text-primary-container">ابتكارات قابلة للتسجيل</p>
+              <p className="text-[10px] text-on-surface-variant font-medium">7 architectural patents + 4 future-tier innovations.</p>
             </div>
-            <div className="glass p-8 rounded-2xl border-l-4 border-l-primary flex flex-col gap-4">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-outline uppercase">Strategic Value</span>
-              <p className="text-4xl font-black">130+</p>
-              <p className="arabic text-xl font-bold text-primary-container">صفحة توثيق استراتيجي</p>
-              <p className="text-xs text-on-surface-variant font-medium">Integrated documentation including legal & financial frameworks.</p>
+            <div className="glass p-6 rounded-xl border-l-2 border-l-primary flex flex-col gap-3">
+              <span className="text-[8px] font-bold tracking-[0.2em] text-outline uppercase">Strategic Value</span>
+              <p className="text-3xl font-black">130+</p>
+              <p className="arabic text-lg font-bold text-primary-container">صفحة توثيق استراتيجي</p>
+              <p className="text-[10px] text-on-surface-variant font-medium">Full strategic, legal, and financial framework mapping.</p>
             </div>
-            <div className="glass p-8 rounded-2xl border-l-4 border-l-primary flex flex-col gap-4">
-              <span className="text-[10px] font-bold tracking-[0.2em] text-outline uppercase">Trade Protection</span>
-              <p className="text-4xl font-black">16</p>
-              <p className="arabic text-xl font-bold text-primary-container">علامة تجارية جاهزة</p>
-              <p className="text-xs text-on-surface-variant font-medium">Marks prepared for local and regional GCC registration.</p>
+            <div className="glass p-6 rounded-xl border-l-2 border-l-primary flex flex-col gap-3">
+              <span className="text-[8px] font-bold tracking-[0.2em] text-outline uppercase">Trade Protection</span>
+              <p className="text-3xl font-black">16</p>
+              <p className="arabic text-lg font-bold text-primary-container">علامة تجارية جاهزة</p>
+              <p className="text-[10px] text-on-surface-variant font-medium">Marks prepared for local and regional GCC registration.</p>
             </div>
           </div>
         </section>
@@ -581,9 +700,11 @@ export default function App() {
             </div>
 
             <div>
-              <h5 className="text-[10px] font-bold uppercase tracking-[0.2em] text-outline mb-8">System Architect</h5>
+              <h5 className="text-[10px] font-bold uppercase tracking-[0.2em] text-outline mb-8">System Authority</h5>
               <div className="flex flex-col gap-2">
-                <span className="text-[10px] font-bold text-outline uppercase mt-2">Sardal Core Operations</span>
+                <span className="text-sm font-bold text-white">Sardal Operations</span>
+                <span className="arabic text-sm text-primary-container font-bold">عمليات السردال</span>
+                <span className="text-[10px] font-bold text-outline uppercase mt-2">Sovereign Cognitive Shell</span>
               </div>
             </div>
 
