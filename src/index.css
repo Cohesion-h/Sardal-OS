@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Hanken Grotesk", "Noto Naskh Arabic", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-surface: #121316;
+  --color-surface-dim: #121316;
+  --color-surface-bright: #38393c;
+  --color-surface-container: #1f1f23;
+  --color-on-surface: #e3e2e6;
+  --color-on-surface-variant: #c1c7cf;
+  
+  --color-primary: #afdaff;
+  --color-primary-container: #8abfea;
+  --color-on-primary-container: #084e73;
+  
+  --color-secondary: #c0c7ce;
+  --color-on-secondary: #2a3137;
+  
+  --color-outline: #8b9199;
+  --color-outline-variant: #41474e;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased selection:bg-primary/30;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+.glass {
+  @apply bg-surface-container/60 backdrop-blur-xl border border-outline-variant/30;
+}
+
+.glass-bright {
+  @apply bg-surface-bright/20 backdrop-blur-md border border-white/10;
+}
+
+.brushed-metal {
+  background: linear-gradient(135deg, #1f2124 0%, #2a2d32 45%, #1f2124 100%);
+  @apply border border-outline-variant/40 shadow-inner;
+}
+
+.glow-primary {
+  box-shadow: 0 0 20px -5px rgba(138, 191, 234, 0.4);
+}
+
+.arabic {
+  font-family: "Noto Naskh Arabic", serif;
+  direction: rtl;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-surface;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-outline-variant/50 rounded-full hover:bg-outline/50 transition-colors;
+}

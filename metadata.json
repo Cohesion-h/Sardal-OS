@@ -1,0 +1,8 @@
+{
+  "name": "Sardal OS: Sovereign Brand Kit",
+  "description": "The official brand identity and strategic guidelines for Sardal OS – a sovereign Arabic-Islamic AI Operating System.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
