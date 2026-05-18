@@ -50,20 +50,20 @@ const FLAG_COLORS = [
 
 const STRATEGIC_PHASES = [
   {
-    tag: 'Phase 01',
-    title: 'Cognitive Foundations',
-    titleAr: 'الأسس الإدراكية',
-    desc: 'Establishing the local-first architecture and Arabic core models.',
-    descAr: 'تأسيس البنية التحتية المحلية والنماذج العربية الأساسية.',
-    items: ['Air-gapped clusters', 'Arabic NLP core', 'Kuwaiti Data residency']
+    tag: 'v0.6 Current',
+    title: 'Cognitive Core Shell',
+    titleAr: 'النواة الإدراكية',
+    desc: 'The stable core processing unit for local-first Arabic reasoning.',
+    descAr: 'وحدة المعالجة المركزية المستقرة للتفكير العربي المحلي أولاً.',
+    items: ['Cognitive Core (Stable)', 'Galaf v1.2 Auth', 'Active Air-Gap']
   },
   {
     tag: 'Phase 02',
     title: 'Sovereign Scale',
     titleAr: 'التوسع السيادي',
-    desc: 'Integration with critical government sectors and secure institutions.',
-    descAr: 'التكامل مع القطاعات الحكومية الحرجة والمؤسسات السيادية.',
-    items: ['CITRA Compliance', 'CBK CORF Integration', 'Secure Intranet']
+    desc: 'Full alignment with New Kuwait 2035 Vision and critical infrastructure.',
+    descAr: 'التوافق التام مع رؤية كويت جديدة 2035 والبنية التحتية الحرجة.',
+    items: ['CITRA v4 Integration', 'CBK CORF Compliance', 'Institutional Shells']
   },
   {
     tag: 'Phase 03',
@@ -209,7 +209,7 @@ export default function App() {
             >
               <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full glass-bright text-[11px] uppercase font-black tracking-[0.3em] text-primary-container mb-12 shadow-inner border border-white/5">
                 <Shield className="w-4 h-4" />
-                Sovereign Cognitive Safeguard
+                Sardal Core v0.6 | New Kuwait 2035
               </div>
 
               <h1 className="text-7xl md:text-9xl font-black mb-8 tracking-tighter leading-none">
@@ -473,9 +473,9 @@ export default function App() {
 
                 <div className="space-y-6">
                   {[
-                    { title: 'Governance Command Center', ar: 'مركز القيادة والتحكم', icon: Monitor, tag: 'Tier 4' },
-                    { title: 'Secure Comms Intranet', icon: Share2, ar: 'شبكة تواصل سيادية', tag: 'PQC_READY' },
-                    { title: 'Sardal Analytical AI', icon: Cpu, ar: 'تحليلات السردال', tag: 'LOCAL_DATA' }
+                    { title: 'Galaf Auth v1.2', ar: 'طبقة المصادقة السيادية جالاف', icon: Lock, tag: 'CORE_AUTH' },
+                    { title: 'Cognitive Core Stable', icon: Cpu, ar: 'النواة الإدراكية المستقرة', tag: 'STABLE_V0.6' },
+                    { title: 'Governance Command Center', ar: 'مركز القيادة والتحكم', icon: Monitor, tag: 'Tier 4' }
                   ].map((item, idx) => (
                     <motion.div 
                       key={idx}
