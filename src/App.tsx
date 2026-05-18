@@ -50,28 +50,55 @@ const FLAG_COLORS = [
 
 const STRATEGIC_PHASES = [
   {
-    tag: 'v0.6 Current',
+    tag: 'v0.6 Stable',
     title: 'Cognitive Core Shell',
     titleAr: 'النواة الإدراكية',
-    desc: 'The stable core processing unit for local-first Arabic reasoning.',
-    descAr: 'وحدة المعالجة المركزية المستقرة للتفكير العربي المحلي أولاً.',
-    items: ['Cognitive Core (Stable)', 'Galaf v1.2 Auth', 'Active Air-Gap']
+    desc: 'The stable processing unit for sovereign Arabic reasoning (SGL Semantic Interceptor).',
+    descAr: 'وحدة المعالجة المستقرة للتفكير العربي السيادي (SGL Interceptor).',
+    items: ['85-Term Lexical Shield', 'Cognitive Firewall', 'Defensive Loop v1']
   },
   {
-    tag: 'Phase 02',
-    title: 'Sovereign Scale',
-    titleAr: 'التوسع السيادي',
-    desc: 'Full alignment with New Kuwait 2035 Vision and critical infrastructure.',
-    descAr: 'التوافق التام مع رؤية كويت جديدة 2035 والبنية التحتية الحرجة.',
-    items: ['CITRA v4 Integration', 'CBK CORF Compliance', 'Institutional Shells']
+    tag: 'Authentication',
+    title: 'Galaf Layer v1.2',
+    titleAr: 'طبقة القلاف للمصادقة',
+    desc: 'Sovereign authentication layer built with zero external dependencies.',
+    descAr: 'طبقة مصادقة سيادية مبنية بـ 504 أسطر كود دون تبعيات خارجية.',
+    items: ['Ed25519 Signatures', 'NIST Standard Hashes', '10μs Auth Speed']
   },
   {
-    tag: 'Phase 03',
-    title: 'Global Outreach',
-    titleAr: 'الانتشار العالمي',
-    desc: 'Empowering the OIC region with independent technological solutions.',
-    descAr: 'تمكين منطقة منظمة التعاون الإسلامي بحلول تقنية مستقلة.',
-    items: ['Cross-border secure OS', 'Islamic Ethics Engine', 'Post-Quantum Crypto']
+    tag: 'Protocol',
+    title: 'Modulo-19 Logic',
+    titleAr: 'بروتوكول موديلو-19',
+    desc: 'Deterministic mathematical verification of AI outputs and root dictionary.',
+    descAr: 'تحقق رياضي حتمي من المخرجات وقاموس الجذور الثلاثية.',
+    items: ['17 Root Dictionary', 'Maqasid Evaluator', 'Deterministic Bus']
+  }
+];
+
+const PILLARS = [
+  { 
+    title: 'Radical Segmentation', 
+    ar: 'التقطيع الصرفي الجذري', 
+    desc: 'Arabic as a base unit via triliteral roots, not statistical translation.',
+    descAr: 'العربية كوحدة بناء أساسية عبر الجذور الثلاثية لا الترجمة الإحصائية.'
+  },
+  { 
+    title: 'Al-Qistas Balance', 
+    ar: 'هندسة القسطاس', 
+    desc: 'Balanced resource distribution with verified mathematical architecture.',
+    descAr: 'توزيع متوازن للموارد والانتباه بمعمارية رياضية موثقة.'
+  },
+  { 
+    title: 'Modulo-19', 
+    ar: 'بروتوكول موديلو 19', 
+    desc: 'Deterministic mathematical verification of all AI content outputs.',
+    descAr: 'تحقق رياضي حتمي من المخرجات.'
+  },
+  { 
+    title: 'Cognitive Firewall', 
+    ar: 'جدار الحماية الإدراكي', 
+    desc: 'Protecting national linguistic models from pollution and injection.',
+    descAr: 'حماية النماذج اللغوية الوطنية من التلوث والحقن.'
   }
 ];
 
@@ -164,24 +191,24 @@ export default function App() {
       <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'glass py-4 shadow-2xl' : 'bg-transparent py-8'}`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <SardalWheel className="w-10 h-10" />
-            <div className="flex flex-col leading-none">
-              <span className="text-2xl font-black tracking-tighter">SARDAL<span className="text-primary-container">OS</span></span>
-              <span className="arabic text-xs font-bold opacity-70">نظام السردال السيادي</span>
+            <SardalWheel className="w-9 h-9" />
+            <div className="flex flex-col leading-[0.9]">
+              <span className="text-xl font-bold tracking-normal">Sardal <span className="text-primary-container">OS</span></span>
+              <span className="arabic text-[10px] font-bold opacity-70">نظام السردال السيادي</span>
             </div>
           </div>
           
-          <div className="hidden lg:flex items-center gap-12 text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">
-            <a href="#identity" className="hover:text-primary transition-colors">Identity</a>
-            <a href="#palette" className="hover:text-primary transition-colors">Surface Palette</a>
-            <a href="#roadmap" className="hover:text-primary transition-colors">Strategic Plan</a>
-            <a href="#mission" className="hover:text-primary transition-colors">Charter</a>
+          <div className="hidden lg:flex items-center gap-8 text-[9px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">
+            <a href="#vision" className="hover:text-primary transition-colors">Vision</a>
+            <a href="#pillars" className="hover:text-primary transition-colors">Pillars</a>
+            <a href="#status" className="hover:text-primary transition-colors">Core Status</a>
+            <a href="#ip" className="hover:text-primary transition-colors">IP Assets</a>
           </div>
 
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setActiveLang(activeLang === 'ar' ? 'en' : 'ar')}
-              className="px-6 py-2 glass-bright rounded-full text-[10px] font-black tracking-widest uppercase flex items-center gap-2 hover:bg-surface-bright transition-colors"
+              className="px-5 py-2 glass-bright rounded-lg text-[9px] font-bold tracking-widest uppercase flex items-center gap-2 hover:bg-surface-bright transition-colors"
             >
               <Globe className="w-3 h-3" />
               {activeLang === 'ar' ? 'English' : 'العربية'}
@@ -207,32 +234,28 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
             >
-              <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full glass-bright text-[11px] uppercase font-black tracking-[0.3em] text-primary-container mb-12 shadow-inner border border-white/5">
+              <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full glass-bright text-[10px] uppercase font-bold tracking-[0.1em] text-primary-container mb-10 shadow-inner border border-white/5">
                 <Shield className="w-4 h-4" />
                 Sardal Core v0.6 | New Kuwait 2035
               </div>
 
-              <h1 className="text-7xl md:text-9xl font-black mb-8 tracking-tighter leading-none">
-                SARDAL<span className="text-primary-container">OS</span>
+              <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-normal leading-none">
+                Sardal <span className="text-primary-container">OS</span>
               </h1>
-              
-              <div className="arabic text-6xl md:text-8xl font-bold mb-16 text-primary-container drop-shadow-2xl">
-                نظام تشغيل <span className="text-white">السردال</span>
-              </div>
 
-              <p className={`max-w-3xl mx-auto text-xl md:text-2xl text-on-surface-variant leading-relaxed mb-16 font-medium ${activeLang === 'ar' ? 'arabic tracking-wide' : 'tracking-tight'}`}>
+              <p className={`max-w-3xl mx-auto text-lg md:text-xl text-on-surface-variant leading-relaxed mb-12 font-medium ${activeLang === 'ar' ? 'arabic tracking-wide' : 'tracking-normal'}`}>
                 {activeLang === 'ar' 
-                  ? 'الدرع الرقمي لسيادتك الإدراكية والثقافية. نظام ذكاء اصطناعي سيادي مبني لإحقاق الاستقلال التقني الكويتي والعربي.'
-                  : 'Your shield for cognitive and cultural sovereignty. A sovereign AI operating system built to achieve Kuwaiti and Arabic technical independence.'
+                  ? 'بناء نظام ذكاء اصطناعي سيادي كامل للأمة العربية والإسلامية، يحفظ الهوية والفطرة، ويخدم السيادة الوطنية، ويعمل محلياً بالكامل.'
+                  : 'Building a fully sovereign AI operating system for the Arabic and Islamic world, preserving identity and serves national sovereignty, running entirely on-premise.'
                 }
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-                <button className="w-full sm:w-auto px-10 py-5 bg-primary-container text-on-primary-container font-black uppercase tracking-[0.2em] text-xs rounded-xl shadow-[0_0_40px_-10px_rgba(138,191,234,0.5)] hover:bg-primary transition-all hover:scale-105 active:scale-95">
-                  {activeLang === 'ar' ? 'ميثاق السيادة' : 'Sovereignty Charter'}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <button className="w-full sm:w-auto px-10 py-5 bg-primary-container text-on-primary-container font-bold uppercase tracking-[0.1em] text-[10px] rounded-lg shadow-2xl hover:bg-primary transition-all active:scale-95">
+                  {activeLang === 'ar' ? 'مركز الخدمات السيادية' : 'Sovereign Dashboard'}
                 </button>
-                <button className="w-full sm:w-auto px-10 py-5 glass-bright font-black uppercase tracking-[0.2em] text-xs rounded-xl hover:bg-surface-bright transition-all border border-white/10">
-                  {activeLang === 'ar' ? 'البنية التحتية' : 'Infrastructure Brief'}
+                <button className="w-full sm:w-auto px-10 py-5 glass-bright font-bold uppercase tracking-[0.1em] text-[10px] rounded-lg hover:bg-surface-bright transition-all border border-white/10">
+                  {activeLang === 'ar' ? 'رؤية كويت جديدة 2035' : 'New Kuwait 2035'}
                 </button>
               </div>
             </motion.div>
@@ -258,96 +281,69 @@ export default function App() {
           </div>
         </section>
 
-        {/* Identity & Symbols */}
-        <section id="identity" className="py-32 max-w-7xl mx-auto px-6">
+        {/* 4 Engineering Pillars */}
+        <section id="pillars" className="py-24 max-w-7xl mx-auto px-6">
           <SectionHeading 
-            arabic="الهوية الأساسية والرموز" 
-            subtitle="The symbolic foundations of maritime guidance and technical leadership."
-            subtitleAr="الأسس الرمزية للتوجيه البحري والقيادة التقنية."
+            arabic="الركائز هندسية الأربعة" 
+            subtitle="The fundamental technological pillars powering the Sardal Engine."
+            subtitleAr="المرتكبات التقنية الأساسية التي يقوم عليها محرك السردال."
           >
-            Core Visual Identity
+            Engineering Pillars
           </SectionHeading>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            <BrandCard title="The Master Symbol" arabic="رمز السردال" icon={ShipWheel}>
-              <div className="flex flex-col items-center gap-10">
-                <div className="p-16 brushed-metal rounded-3xl glow-primary border border-primary/20 relative group-hover:rotate-12 transition-transform duration-[2s]">
-                  <SardalWheel className="w-32 h-32" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {PILLARS.map((pillar, i) => (
+              <motion.div 
+                key={pillar.title}
+                whileHover={{ y: -4 }}
+                className="glass p-6 rounded-2xl border border-white/5 hover:border-primary/20 transition-all group"
+              >
+                <div className="w-10 h-10 rounded-xl brushed-metal flex items-center justify-center text-primary-container mb-6">
+                   {i === 0 ? <Type className="w-5 h-5" /> : i === 1 ? <Compass className="w-5 h-5" /> : i === 2 ? <CheckCircle className="w-5 h-5" /> : <Shield className="w-5 h-5" />}
                 </div>
-                <p className="text-xs text-on-surface-variant text-center leading-relaxed font-medium">
-                  The ship's wheel (Daffa) represents strategic direction, institutional leadership, and digital sovereignty.
+                <h4 className="text-sm font-bold mb-1">{pillar.title}</h4>
+                <p className="arabic text-sm text-primary-container mb-4">{pillar.ar}</p>
+                <p className="text-[11px] text-on-surface-variant leading-relaxed">
+                  {activeLang === 'ar' ? pillar.descAr : pillar.desc}
                 </p>
-              </div>
-            </BrandCard>
-
-            <BrandCard title="Arabic Calligraphy" arabic="الخط العربي السيادي" icon={Type}>
-              <div className="flex flex-col items-center gap-10">
-                <div className="h-32 flex items-center justify-center p-8 glass-bright rounded-2xl w-full">
-                  <span className="arabic text-7xl font-bold text-white selection:bg-primary/50">السردال</span>
-                </div>
-                <div className="space-y-6 w-full">
-                  <div className="flex justify-between items-center text-[11px] uppercase font-black tracking-widest text-outline">
-                    <span>Noto Naskh Arabic</span>
-                    <span className="arabic">نوتو نسخ المعدل</span>
-                  </div>
-                  <div className="h-1.5 bg-surface-bright rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "85%" }}
-                      className="h-full bg-primary-container" 
-                    />
-                  </div>
-                  <p className="text-xs text-on-surface-variant leading-relaxed font-medium">
-                    A custom-tuned Naskh script balanced with Hanken Grotesk for dual-language parity in government briefings.
-                  </p>
-                </div>
-              </div>
-            </BrandCard>
-
-            <BrandCard title="National Integration" arabic="التكامل الوطني" icon={Award}>
-              <div className="flex flex-col items-center gap-10">
-                <div className="grid grid-cols-2 gap-4 w-full">
-                  {FLAG_COLORS.map(c => (
-                    <div key={c.hex} className="flex flex-col gap-3 p-4 glass rounded-xl border border-white/5 hover:bg-surface-bright transition-colors">
-                      <div className="w-full h-8 rounded-md shadow-inner" style={{ backgroundColor: c.hex }} />
-                      <span className="text-[10px] font-black text-outline uppercase tracking-widest">{c.name}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-on-surface-variant leading-relaxed font-medium">
-                  Discrete integration of the Kuwaiti flag colors into digital UI elements as indicators of security tiering.
-                </p>
-              </div>
-            </BrandCard>
+              </motion.div>
+            ))}
           </div>
         </section>
 
-        {/* Surface Palette */}
-        <section id="palette" className="py-32 bg-surface-container/30 border-y border-outline-variant/10">
+        {/* Status Center */}
+        <section id="status" className="py-24 bg-surface-container/20 border-y border-outline-variant/10">
           <div className="max-w-7xl mx-auto px-6">
             <SectionHeading 
-              arabic="لوحة الألوان الرقمية" 
-              subtitle="High-contrast dark palettes optimized for 24/7 command center visibility."
-              subtitleAr="لوحات ألوان داكنة عالية التباين لغرف العمليات التي تعمل على مدار الساعة."
+              arabic="الحالة الحالية (v0.6)" 
+              subtitle="Current operational status of core segments and active research modules."
+              subtitleAr="الحالة التشغيلية الحالية للقطاعات الأساسية ووحدات البحث النشطة."
             >
-              Surface Palette
+              System Operations
             </SectionHeading>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
-              {BRAND_PALETTE.map((p) => (
-                <div key={p.hex} className="glass rounded-2xl overflow-hidden group hover:border-primary/40 transition-all cursor-crosshair">
-                  <div 
-                    className="h-56 transition-transform group-hover:scale-105 duration-700 relative overflow-hidden" 
-                    style={{ backgroundColor: p.hex }} 
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="grid lg:grid-cols-3 gap-8 relative">
+              {STRATEGIC_PHASES.map((phase, i) => (
+                <div 
+                  key={phase.tag}
+                  className="glass p-8 rounded-2xl border border-white/5 hover:border-primary/20 transition-all group overflow-hidden"
+                >
+                  <div className="flex justify-between items-start mb-6">
+                    <span className="text-[9px] font-bold tracking-widest text-primary-container uppercase px-2 py-1 bg-primary/10 rounded-md">{phase.tag}</span>
+                    <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
                   </div>
-                  <div className="p-6">
-                    <div className="flex flex-col gap-1 mb-4">
-                      <span className="text-[11px] font-black uppercase tracking-[0.2em]">{p.name}</span>
-                      <span className="text-[10px] font-mono opacity-50 uppercase">{p.hex}</span>
-                    </div>
-                    <p className="text-[11px] text-outline leading-tight font-medium uppercase tracking-tighter">{p.role}</p>
+                  <h3 className="text-lg font-bold mb-1">{phase.title}</h3>
+                  <p className="arabic text-lg text-primary font-bold mb-4">{phase.titleAr}</p>
+                  <p className="text-[11px] text-on-surface-variant mb-8 leading-relaxed font-medium min-h-[3rem]">
+                    {activeLang === 'ar' ? phase.descAr : phase.desc}
+                  </p>
+                  <div className="space-y-3">
+                    {phase.items.map(item => (
+                      <div key={item} className="flex items-center gap-3 text-[10px] font-bold text-outline">
+                        <CheckCircle className="w-3.5 h-3.5 text-primary" />
+                        {item}
+                      </div>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -355,50 +351,35 @@ export default function App() {
           </div>
         </section>
 
-        {/* Strategic Plan */}
-        <section id="roadmap" className="py-32 max-w-7xl mx-auto px-6">
+        {/* IP & Recognition */}
+        <section id="ip" className="py-24 max-w-7xl mx-auto px-6">
           <SectionHeading 
-            arabic="خطة التنفيذ الاستراتيجي" 
-            subtitle="The roadmap toward full cloud-to-local sovereignty transition."
-            subtitleAr="خارطة الطريق نحو الانتقال الكامل لسيادة البيانات المحلية."
+            arabic="الملكية الفكرية والابتكار" 
+            subtitle="Registered trademarks and patentable strategic assets developed entirely in-house."
+            subtitleAr="العلامات التجارية المسجلة والأصول الاستراتيجية المسجلة كبراءات اختراع."
           >
-            Strategic Roadmap
+            Intellectual Assets
           </SectionHeading>
 
-          <div className="grid lg:grid-cols-3 gap-12 relative">
-            {STRATEGIC_PHASES.map((phase, i) => (
-              <motion.div 
-                key={phase.tag}
-                initial={{ opacity: 0, x: i === 0 ? -20 : i === 2 ? 20 : 0 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: i * 0.2 }}
-                className="relative z-10 glass p-10 rounded-3xl border border-white/5 hover:border-primary/20 transition-all group overflow-hidden"
-              >
-                <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/5 rounded-full blur-[80px] group-hover:bg-primary/10 transition-colors" />
-                
-                <div className="w-16 h-16 rounded-2xl brushed-metal flex items-center justify-center mb-8 text-primary shadow-2xl group-hover:glow-primary transition-all">
-                  {i === 0 ? <Cpu className="w-8 h-8" /> : i === 1 ? <Layers className="w-8 h-8" /> : <Globe className="w-8 h-8" />}
-                </div>
-
-                <span className="text-[11px] font-black tracking-[0.4em] text-primary-container uppercase mb-6 block">{phase.tag}</span>
-                
-                <h3 className="text-2xl font-black mb-1">{phase.title}</h3>
-                <p className="arabic text-xl text-primary font-bold mb-6">{phase.titleAr}</p>
-                
-                <p className="text-sm text-on-surface-variant mb-10 leading-relaxed font-medium min-h-[4rem]">
-                  {activeLang === 'ar' ? phase.descAr : phase.desc}
-                </p>
-
-                <div className="space-y-4">
-                  {phase.items.map(item => (
-                    <div key={item} className="flex items-center gap-4 text-xs font-bold text-outline">
-                      <CheckCircle className="w-4 h-4 text-primary" />
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="glass p-8 rounded-2xl border-l-4 border-l-primary flex flex-col gap-4">
+              <span className="text-[10px] font-bold tracking-[0.2em] text-outline uppercase">Patent Roadmap</span>
+              <p className="text-4xl font-black">11</p>
+              <p className="arabic text-xl font-bold text-primary-container">ابتكارات قابلة للتسجيل</p>
+              <p className="text-xs text-on-surface-variant font-medium">7 architectural patents + 4 future-tier innovations.</p>
+            </div>
+            <div className="glass p-8 rounded-2xl border-l-4 border-l-primary flex flex-col gap-4">
+              <span className="text-[10px] font-bold tracking-[0.2em] text-outline uppercase">Strategic Value</span>
+              <p className="text-4xl font-black">130+</p>
+              <p className="arabic text-xl font-bold text-primary-container">صفحة توثيق استراتيجي</p>
+              <p className="text-xs text-on-surface-variant font-medium">Integrated documentation including legal & financial frameworks.</p>
+            </div>
+            <div className="glass p-8 rounded-2xl border-l-4 border-l-primary flex flex-col gap-4">
+              <span className="text-[10px] font-bold tracking-[0.2em] text-outline uppercase">Trade Protection</span>
+              <p className="text-4xl font-black">16</p>
+              <p className="arabic text-xl font-bold text-primary-container">علامة تجارية جاهزة</p>
+              <p className="text-xs text-on-surface-variant font-medium">Marks prepared for local and regional GCC registration.</p>
+            </div>
           </div>
         </section>
 
@@ -570,62 +551,65 @@ export default function App() {
         </section>
       </main>
 
-      {/* Corporate Footer */}
-      <footer className="glass border-t border-white/5 pt-20 pb-12 mt-20 relative overflow-hidden backdrop-blur-2xl">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-16 mb-20 relative z-10">
-           <div className="col-span-2">
-              <div className="flex items-center gap-4 mb-8">
-                <SardalWheel className="w-12 h-12" />
-                <div className="flex flex-col">
-                  <span className="text-3xl font-black tracking-tighter">SARDAL<span className="text-primary-container">OS</span></span>
-                  <span className="arabic text-sm font-bold opacity-70">نظام السردال السيادي</span>
-                </div>
+      {/* Footer & Contact */}
+      <footer className="pt-24 border-t border-outline-variant/10 relative overflow-hidden bg-surface-container/20">
+        {/* Kuwait Flag Decorative Rail */}
+        <div className="flex h-1.5 w-full">
+           <div className="flex-1 bg-[#007a3d]" />
+           <div className="flex-1 bg-white" />
+           <div className="flex-1 bg-[#ce1126]" />
+           <div className="flex-1 bg-black" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div className="col-span-2">
+              <div className="flex items-center gap-3 mb-6">
+                <SardalWheel className="w-8 h-8" />
+                <span className="text-lg font-bold tracking-normal uppercase">Sardal OS</span>
               </div>
-              <p className="text-on-surface-variant text-sm max-w-sm mb-8 font-medium">
-                Sardal OS is the cornerstone of Kuwaiti digital autonomy, providing a secure foundation for the Arabic-Islamic knowledge economy.
+              <p className="text-sm text-on-surface-variant max-w-md leading-relaxed font-medium mb-8">
+                {activeLang === 'ar' 
+                  ? 'مشروع وطني استراتيجي يهدف إلى بناء بنية تحتية سيادية للذكاء الاصطناعي في دولة الكويت، يركز على الحفاظ على أعلى مستويات الأمان والسيادة الرقمية.'
+                  : 'A strategic national project aimed at building a sovereign AI infrastructure in Kuwait, focusing on maintaining the highest levels of digital security and sovereignty.'}
               </p>
               <div className="flex gap-4">
-                {FLAG_COLORS.map(c => (
-                  <div key={c.hex} className="w-10 h-1 rounded-full" style={{ backgroundColor: c.hex }} />
-                ))}
+                <a href="mailto:cohesionkw@gmail.com" className="p-3 glass rounded-lg hover:bg-surface-bright transition-colors text-primary border border-white/5">
+                  <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
-           </div>
-           
-           <div>
-             <h5 className="text-[11px] font-black uppercase tracking-[0.4em] text-primary mb-8">Sovereignty</h5>
-             <div className="space-y-4 text-sm font-medium text-on-surface-variant">
-               <a href="#" className="block hover:text-white transition-colors">Privacy Core</a>
-               <a href="#" className="block hover:text-white transition-colors">Local Residency</a>
-               <a href="#" className="block hover:text-white transition-colors">Post-Quantum Sec</a>
-               <a href="#" className="block hover:text-white transition-colors">Arabic Ethics</a>
-             </div>
-           </div>
+            </div>
 
-           <div>
-             <h5 className="text-[11px] font-black uppercase tracking-[0.4em] text-primary mb-8">Access</h5>
-             <div className="space-y-4 text-sm font-medium text-on-surface-variant">
-               <a href="#" className="block hover:text-white transition-colors">Gov Portal</a>
-               <a href="#" className="block hover:text-white transition-colors">Institution Log</a>
-               <a href="#" className="block hover:text-white transition-colors">Developer SDK</a>
-               <a href="#" className="block hover:text-white transition-colors">Technical Spec</a>
-             </div>
-           </div>
-        </div>
+            <div>
+              <h5 className="text-[10px] font-bold uppercase tracking-[0.2em] text-outline mb-8">System Architect</h5>
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] font-bold text-outline uppercase mt-2">Sardal Core Operations</span>
+              </div>
+            </div>
 
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-white/5 pt-8">
-          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-outline">
-            © 2026 SARDAL OPERATIONS | COHESION HOLDING | STATE OF KUWAIT
+            <div>
+              <h5 className="text-[10px] font-bold uppercase tracking-[0.2em] text-outline mb-8">Connect</h5>
+              <div className="flex flex-col gap-4 text-xs font-bold">
+                <a href="mailto:cohesionkw@gmail.com" className="hover:text-primary transition-colors flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary" />
+                  cohesionkw@gmail.com
+                </a>
+                <div className="flex items-center gap-3 text-outline">
+                  <div className="w-2 h-2 rounded-full bg-outline-variant" />
+                  Kuwait City, KW
+                </div>
+              </div>
+            </div>
           </div>
           
-          <div className="flex items-center gap-8 text-[10px] font-black uppercase tracking-widest text-outline">
-             <div className="flex items-center gap-2">
-                <Bookmark className="w-3 h-3" />
-                <span>Confidential_Kit_5.0</span>
-             </div>
-             <a href="#" className="flex items-center gap-2 hover:text-white transition-colors">
-                <ExternalLink className="w-3 h-3" />
-                <span>Primary_Mirror</span>
-             </a>
+          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-outline-variant/5 text-[9px] font-bold uppercase tracking-[0.2em] text-outline text-center md:text-left">
+            <p>All Rights Reserved © 2026 Cohesion Holding</p>
+            <div className="flex gap-8 mt-4 md:mt-0 items-center justify-center">
+               <span className="text-primary tracking-normal font-sans">
+                 SARDAL_CORE_SHELL_V0.6
+               </span>
+               <span className="text-on-surface">Kuwait 2035 Compliant</span>
+            </div>
           </div>
         </div>
       </footer>
