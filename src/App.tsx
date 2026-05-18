@@ -29,7 +29,12 @@ import {
   Share2,
   Bookmark,
   Heart,
-  Users
+  Users,
+  Leaf,
+  BookOpen,
+  Zap,
+  Wand2,
+  Database
 } from 'lucide-react';
 
 // --- Constants & Data ---
@@ -110,6 +115,7 @@ const MAQASID = [
   { name: 'Intellect', ar: 'حفظ العقل', icon: Cpu },
   { name: 'Lineage', ar: 'حفظ النسل', icon: Users },
   { name: 'Wealth', ar: 'حفظ المال', icon: Award },
+  { name: 'Environment', ar: 'حفظ البيئة', icon: Leaf },
 ];
 
 const VISION_GOALS = [
@@ -154,7 +160,7 @@ const SectionHeading = ({ children, arabic, subtitle, subtitleAr }) => (
   <div className="mb-12">
     <div className="flex items-center gap-4 mb-4">
       <div className="flex flex-col">
-        <h2 className="text-3xl font-bold uppercase tracking-tight text-primary-container leading-none">{children}</h2>
+        <h2 className="text-lg font-light tracking-tight text-primary-container leading-none capitalize">{children.charAt(0).toUpperCase() + children.slice(1).toLowerCase()}</h2>
         <h2 className="arabic text-3xl font-bold text-primary-container mt-2">{arabic}</h2>
       </div>
       <div className="h-px flex-1 bg-outline-variant/30" />
@@ -252,10 +258,13 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
             >
-              <div className="inline-flex items-center gap-3 px-3 py-1 rounded-full glass-bright text-[9px] uppercase font-bold tracking-widest text-primary-container mb-8 shadow-inner border border-white/5">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="inline-flex items-center gap-3 px-3 py-1 rounded-full glass-bright text-[9px] uppercase font-bold tracking-widest text-primary-container mb-8 shadow-inner border border-white/5"
+              >
                 <Shield className="w-3.5 h-3.5" />
                 Sardal Core Shell v0.6 | Project Overview
-              </div>
+              </motion.div>
 
               <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter leading-none">
                 Sardal <span className="text-primary-container">OS</span>
@@ -269,12 +278,22 @@ export default function App() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button className="w-full sm:w-auto px-8 py-4 bg-primary-container text-on-primary-container font-bold uppercase tracking-widest text-[9px] rounded-md shadow-xl hover:bg-primary transition-all active:scale-95">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full sm:w-auto px-8 py-4 bg-primary-container text-on-primary-container font-bold uppercase tracking-widest text-[9px] rounded-md shadow-xl hover:bg-primary transition-all"
+                >
                   {activeLang === 'ar' ? 'نظرة عامة على المشروع' : 'Strategic Overview'}
-                </button>
-                <button className="w-full sm:w-auto px-8 py-4 glass-bright font-bold uppercase tracking-widest text-[9px] rounded-md hover:bg-surface-bright transition-all border border-white/10">
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => document.getElementById('generation')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full sm:w-auto px-8 py-4 glass-bright font-bold uppercase tracking-widest text-[9px] rounded-md hover:bg-surface-bright transition-all border border-white/10"
+                >
                   {activeLang === 'ar' ? 'رؤية كويت 2035' : 'New Kuwait 2035'}
-                </button>
+                </motion.button>
               </div>
             </motion.div>
           </div>
@@ -404,17 +423,21 @@ export default function App() {
             Ethical Framework
           </SectionHeading>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
             {MAQASID.map((m) => (
-              <div key={m.name} className="glass p-6 rounded-xl flex flex-col items-center gap-4 text-center hover:border-primary/30 transition-all border border-white/5">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <motion.div
+                key={m.name}
+                whileHover={{ y: -6, scale: 1.05 }}
+                className="glass p-6 rounded-xl flex flex-col items-center gap-4 text-center hover:border-primary/30 transition-all border border-white/5 cursor-pointer group"
+              >
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 group-hover:shadow-lg transition-all">
                   <m.icon className="w-5 h-5" />
                 </div>
                 <div>
                    <p className="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">{m.name}</p>
                    <p className="arabic text-sm font-bold text-white">{m.ar}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
@@ -721,6 +744,27 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </div>
+          
+          <div className="grid md:grid-cols-4 gap-4 mb-12 pb-12 border-b border-outline-variant/10">
+            {[
+              { icon: BookOpen, title: 'Documentation', ar: 'المواد العلمية' },
+              { icon: Database, title: 'Architecture', ar: 'البنية التحتية' },
+              { icon: Zap, title: 'Deployment', ar: 'النشر' },
+              { icon: Wand2, title: 'Innovation', ar: 'الابتكار' }
+            ].map(({ icon: Icon, title, ar }) => (
+              <motion.div
+                key={title}
+                whileHover={{ scale: 1.05, y: -4 }}
+                className="p-6 glass rounded-xl border border-primary/30 bg-primary/5 hover:bg-primary/10 cursor-pointer transition-all group"
+              >
+                <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary-container mb-3 group-hover:bg-primary/30 group-hover:shadow-lg transition-all">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <p className="text-xs font-bold text-white mb-1 group-hover:text-primary-container transition-colors">{title}</p>
+                <p className="arabic text-xs font-bold text-primary">{ar}</p>
+              </motion.div>
+            ))}
           </div>
           
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-outline-variant/5 text-[9px] font-bold uppercase tracking-[0.2em] text-outline text-center md:text-left">
